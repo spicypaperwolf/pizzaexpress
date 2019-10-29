@@ -11,8 +11,4 @@ class buyer extends Model
     public function order(){
         return $this->hasMany('App\order');
     }
-
-    public function user(){
-        return $this->belongsTo('App\user', 'id', 'user_id');
-    }
 }

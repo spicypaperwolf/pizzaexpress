@@ -1,162 +1,170 @@
 @extends('layouts.index')
 @section('home')
-{{--	Slider --}}
-	<section class="home-slider owl-carousel img" style="background-image: url(images/bg_1.jpg);">
-      <div class="slider-item">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text align-items-center" data-scrollax-parent="true">
-            <div class="col-md-6 col-sm-12 ftco-animate">
-            	<span class="subheading">Delicious</span>
-              <h1 class="mb-4">Italian Cuizine</h1>
-              <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
-            </div>
-            <div class="col-md-6 ftco-animate">
-            	<img src="images/bg_1.png" class="img-fluid" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
+	<section class="home-slider owl-carousel img">
+		@foreach($slider as $sliders)
+			@if($sliders -> typeid == 1)
+				<div class="slider-item" style="background-image: url(images/{{$sliders->background}});">
+					<div class="overlay"></div>
+					<div class="container">
+						<div class="row slider-text align-items-center" data-scrollax-parent="true">
+							<div class="col-md-6 col-sm-12 ftco-animate">
+								<span class="subheading">{{$sliders->heading}}</span>
+								<h1 class="mb-4">{{$sliders->title}}</h1>
+								<p class="mb-4 mb-md-5">{{$sliders->content}}</p>
+								<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+							</div>
+							<div class="col-md-6 ftco-animate">
+								<img src="images/{{$sliders->picture}}" class="img-fluid" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			@endif
+			@if($sliders -> typeid == 2)
+				<div class="slider-item" style="background-image: url(images/{{$sliders->background}});">
+					<div class="overlay"></div>
+					<div class="container">
+						<div class="row slider-text align-items-center" data-scrollax-parent="true">
+							<div class="col-md-6 col-sm-12 order-md-last ftco-animate">
+								<span class="subheading">{{$sliders->heading}}</span>
+								<h1 class="mb-4">{{$sliders->title}}</h1>
+								<p class="mb-4 mb-md-5">{{$sliders->content}}</p>
+								<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+							</div>
+							<div class="col-md-6 ftco-animate">
+								<img src="images/{{$sliders->picture}}" class="img-fluid" alt="">
+							</div>
 
-      <div class="slider-item">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text align-items-center" data-scrollax-parent="true">
+						</div>
+					</div>
+				</div>
+			@endif
+			@if($sliders -> typeid == 3)
+				<div class="slider-item" style="background-image: url(images/{{$sliders->background}});">
+					<div class="overlay"></div>
+					<div class="container">
+						<div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
-            <div class="col-md-6 col-sm-12 order-md-last ftco-animate">
-            	<span class="subheading">Crunchy</span>
-              <h1 class="mb-4">Italian Pizza</h1>
-              <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
-            </div>
-            <div class="col-md-6 ftco-animate">
-            	<img src="images/bg_2.png" class="img-fluid" alt="">
-            </div>
+							<div class="col-md-7 col-sm-12 text-center ftco-animate">
+								<span class="subheading">{{$sliders->heading}}</span>
+								<h1 class="mb-4">{{$sliders->title}}</h1>
+								<p class="mb-4 mb-md-5">{{$sliders->content}}</p>
+								<p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
+							</div>
 
-          </div>
-        </div>
-      </div>
+						</div>
+					</div>
+				</div>
+			@endif
+		@endforeach
+	</section>
+	{{--Ene of slider--}}
 
-      <div class="slider-item" style="background-image: url(images/bg_3.jpg);">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+	{{--Contact & Social media--}}
+	@foreach($aboutpage as $about)
+		<section class="ftco-intro">
+			<div class="container-wrap">
+				<div class="wrap d-md-flex">
+					<div class="info">
+						<div class="row no-gutters">
+							<div class="col-md-4 d-flex ftco-animate">
+								<div class="icon"><span class="icon-phone"></span></div>
+								<div class="text">
+									<h3>{{$about->telephone}}</h3>
+									<p>{{$about->telephone_content}}</p>
+								</div>
+							</div>
+							<div class="col-md-4 d-flex ftco-animate">
+								<div class="icon"><span class="icon-my_location"></span></div>
+								<div class="text">
+									<h3>{{$about->address}}</h3>
+									<p>{{$about->address_content}}</p>
+								</div>
+							</div>
+							<div class="col-md-4 d-flex ftco-animate">
+								<div class="icon"><span class="icon-clock-o"></span></div>
+								<div class="text">
+									<h3>{{$about->workinghour}}</h3>
+									<p>{{$about->workinghour_content}}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="social d-md-flex pl-md-5 p-4 align-items-center">
+						<ul class="social-icon">
+							<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+							<li class="ftco-animate"><a href="https://www.facebook.com/PizzaExpress-506101786822933/?modal=admin_todo_tour" target="_blank"><span class="icon-facebook"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		{{--End Contact & Social media--}}
 
-            <div class="col-md-7 col-sm-12 text-center ftco-animate">
-            	<span class="subheading">Welcome</span>
-              <h1 class="mb-4">We cooked your desired Pizza Recipe</h1>
-              <p class="mb-4 mb-md-5">A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-              <p><a href="#" class="btn btn-primary p-3 px-xl-4 py-xl-3">Order Now</a> <a href="#" class="btn btn-white btn-outline-white p-3 px-xl-4 py-xl-3">View Menu</a></p>
-            </div>
+		{{--About--}}
+		<section class="ftco-about d-md-flex">
+			<div class="one-half img" style="background-image: url(images/about.jpg);"></div>
+			<div class="one-half ftco-animate">
+				<div class="heading-section ftco-animate ">
+					<h2 class="mb-4"><span class="flaticon-pizza"></span> {{$about->abouttitle}}</h2>
+				</div>
+				<div>
+					<p>{{$about->aboutcontent}}</p>
+				</div>
+			</div>
+		</section>
+	@endforeach
+	{{--End About--}}
 
-          </div>
-        </div>
-      </div>
-    </section>
-{{--Ene of slider--}}
-
-{{--Contact & Social media--}}
-    <section class="ftco-intro">
-    	<div class="container-wrap">
-    		<div class="wrap d-md-flex">
-	    		<div class="info">
-	    			<div class="row no-gutters">
-	    				<div class="col-md-4 d-flex ftco-animate">
-	    					<div class="icon"><span class="icon-phone"></span></div>
-	    					<div class="text">
-	    						<h3>000 (123) 456 7890</h3>
-	    						<p>A small river named Duden flows</p>
-	    					</div>
-	    				</div>
-	    				<div class="col-md-4 d-flex ftco-animate">
-	    					<div class="icon"><span class="icon-my_location"></span></div>
-	    					<div class="text">
-	    						<h3>198 West 21th Street</h3>
-	    						<p>Suite 721 New York NY 10016</p>
-	    					</div>
-	    				</div>
-	    				<div class="col-md-4 d-flex ftco-animate">
-	    					<div class="icon"><span class="icon-clock-o"></span></div>
-	    					<div class="text">
-	    						<h3>Open Monday-Friday</h3>
-	    						<p>8:00am - 9:00pm</p>
-	    					</div>
-	    				</div>
-	    			</div>
-	    		</div>
-	    		<div class="social d-md-flex pl-md-5 p-4 align-items-center">
-	    			<ul class="social-icon">
-              <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-            </ul>
-	    		</div>
-    		</div>
-    	</div>
-    </section>
-{{--End Contact & Social media--}}
-
-{{--About--}}
-    <section class="ftco-about d-md-flex">
-    	<div class="one-half img" style="background-image: url(images/about.jpg);"></div>
-    	<div class="one-half ftco-animate">
-        <div class="heading-section ftco-animate ">
-          <h2 class="mb-4">Welcome to <span class="flaticon-pizza">Pizza</span> A Restaurant</h2>
-        </div>
-        <div>
-  				<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
-  			</div>
-    	</div>
-    </section>
-{{--End About--}}
-
-{{--Service--}}
-    <section class="ftco-section ftco-services">
-    	<div class="overlay"></div>
-    	<div class="container">
-    		<div class="row justify-content-center mb-5 pb-3">
-          <div class="col-md-7 heading-section ftco-animate text-center">
-            <h2 class="mb-4">Our Services</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-          </div>
-        </div>
-    		<div class="row">
-          <div class="col-md-4 ftco-animate">
-            <div class="media d-block text-center block-6 services">
-              <div class="icon d-flex justify-content-center align-items-center mb-5">
-              	<span class="flaticon-diet"></span>
-              </div>
-              <div class="media-body">
-                <h3 class="heading">Healthy Foods</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md-4 ftco-animate">
-            <div class="media d-block text-center block-6 services">
-              <div class="icon d-flex justify-content-center align-items-center mb-5">
-              	<span class="flaticon-bicycle"></span>
-              </div>
-              <div class="media-body">
-                <h3 class="heading">Fastest Delivery</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-              </div>
-            </div>      
-          </div>
-          <div class="col-md-4 ftco-animate">
-            <div class="media d-block text-center block-6 services">
-              <div class="icon d-flex justify-content-center align-items-center mb-5"><span class="flaticon-pizza-1"></span></div>
-              <div class="media-body">
-                <h3 class="heading">Original Recipes</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-              </div>
-            </div>    
-          </div>
-        </div>
-    	</div>
-    </section>
-{{--End Service--}}
+	{{--Service--}}
+	@foreach($ourservice as $os)
+		<section class="ftco-section ftco-services">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row justify-content-center mb-5 pb-3">
+					<div class="col-md-7 heading-section ftco-animate text-center">
+						<h2 class="mb-4">{{$os->title}}</h2>
+						<p>{{$os->subtitle}}</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4 ftco-animate">
+						<div class="media d-block text-center block-6 services">
+							<div class="icon d-flex justify-content-center align-items-center mb-5">
+								<span class="flaticon-diet"></span>
+							</div>
+							<div class="media-body">
+								<h3 class="heading">{{$os->form1_title}}</h3>
+								<p>{{$os->form1_content}}</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 ftco-animate">
+						<div class="media d-block text-center block-6 services">
+							<div class="icon d-flex justify-content-center align-items-center mb-5">
+								<span class="flaticon-bicycle"></span>
+							</div>
+							<div class="media-body">
+								<h3 class="heading">{{$os->form2_title}}</h3>
+								<p>{{$os->form2_content}}</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 ftco-animate">
+						<div class="media d-block text-center block-6 services">
+							<div class="icon d-flex justify-content-center align-items-center mb-5"><span class="flaticon-pizza-1"></span></div>
+							<div class="media-body">
+								<h3 class="heading">{{$os->form3_title}}</h3>
+								<p>{{$os->form3_content}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	@endforeach
+	{{--End Service--}}
 
 {{--Service--}}
 {{--    <section class="ftco-section">--}}
@@ -551,30 +559,31 @@
 {{--    	</div>--}}
 {{--    </section>--}}
 
-		
-		<section class="ftco-appointment">
-			<div class="overlay"></div>
-    	<div class="container-wrap">
-    		<div class="row no-gutters d-md-flex align-items-center">
-    			<div class="col-md-6 d-flex align-self-stretch">
-    				<div id="map"></div>
-    			</div>
-	    		<div class="col-md-6 appointment ftco-animate">
-	    			<h3 class="mb-3">NEWSLETTER</h3>
-	    			<form action="#" class="appointment-form">
-	    				<div class="d-md-flex">
-		    				<div class="form-group">
-		    					<input type="text" class="form-control" placeholder="E-mail">
-		    				</div>
-	    				</div>
-	    				<div class="form-group">
-	            </div>
-	            <div class="form-group">
-	              <input type="submit" value="Send" class="btn btn-primary py-3 px-4">
-	            </div>
-	    			</form>
-	    		</div>
-    		</div>
-    	</div>
-    </section>
+
+	<section class="ftco-appointment">
+		<div class="overlay"></div>
+		<div class="container-wrap">
+			<div class="row no-gutters d-md-flex align-items-center">
+				<div class="col-md-6 d-flex align-self-stretch">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15677.77210499207!2d106.66820907484852!3d10.777340955806523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed2392c44df%3A0xd2ecb62e0d050fe9!2sFPT-Aptech+Computer+Education+HCM!5e0!3m2!1sen!2s!4v1563712252257!5m2!1sen!2s" width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+				</div>
+				<div class="col-md-6 appointment ftco-animate">
+					<h3 class="mb-3">NEWSLETTER</h3>
+					<form action="{{route('insert')}}" method="post" class="appointment-form">
+						<div class="d-md-flex">
+							<div class="form-group">
+								{{csrf_field()}}
+								<input type="email" class="form-control" placeholder="E-mail" name="email">
+							</div>
+						</div>
+						<div class="form-group">
+						</div>
+						<div class="form-group">
+							<input type="submit" value="Send" class="btn btn-primary py-3 px-4">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
 	@endsection('home')

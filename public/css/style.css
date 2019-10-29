@@ -9010,30 +9010,3 @@ textarea.form-control {
   color: white;
   display: inline;
 }
-.log-in{
-  padding-top: 150px;
-  padding-bottom: 150px;
-}
-
-.new-product{
-  font-family: "Poppins", Arial, sans-serif !important;
-  background-color: #fac564 !important;
-}
-
-.new-product-body{
-  background-color: transparent !important;
-}
-
-.cart-sidebar{
-  margin-top: 16px;
-}
-
-.show > .btn-primary.dropdown-toggle{
-  border: 1px solid #fac564;
-  color: #fac564;
-  background-color: transparent;
-}
-
-.yourOrderTitle{
-  font-family: "Poppins", Arial, sans-serif !important;
-}

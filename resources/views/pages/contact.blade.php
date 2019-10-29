@@ -22,48 +22,46 @@
       <div class="row block-9">
         <div class="col-md-4 contact-info ftco-animate">
           <div class="row">
-            <div class="col-md-12 mb-4">
-              <h2 class="h4">Contact Information</h2>
-            </div>
-            <div class="col-md-12 mb-3">
-              <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
-            </div>
-            <div class="col-md-12 mb-3">
-              <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
-            </div>
-            <div class="col-md-12 mb-3">
-              <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
-            </div>
-            <div class="col-md-12 mb-3">
-              <p><span>Website:</span> <a href="#">yoursite.com</a></p>
-            </div>
+            @foreach($contact as $contact)
+              <div class="col-md-12 mb-4">
+                @if($contact -> maincolumn == 1)
+                  <h2 class="h4">{{$contact->title}}</h2>
+                @endif
+              </div>
+              <div class="col-md-12 mb-3">
+                <p><span>{{$contact->subtitle}}:</span> {{$contact->subtitle_content}}</p>
+              </div>
+            @endforeach
           </div>
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-6 ftco-animate">
-          <form action="#" class="contact-form">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Your Name">
+          @foreach($contactform as $contactform)
+            <form action="{{route('insertc')}}" method="post" class="contact-form">
+              {{ csrf_field() }}
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" id="name" class="form-control" placeholder="{{$contactform->placeholder1}}" name="name">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <input type="text" id="email" class="form-control" placeholder="{{$contactform->placeholder2}}" name="email">
+                  </div>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Your Email">
-                </div>
+              <div class="form-group">
+                <input type="text" id="subject" class="form-control" placeholder="{{$contactform->placeholder3}}" name="subject">
               </div>
-            </div>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Subject">
-            </div>
-            <div class="form-group">
-              <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-            </div>
-            <div class="form-group">
-              <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
-            </div>
-          </form>
+              <div class="form-group">
+                <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="{{$contactform->placeholder4}}"></textarea>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="{{$contactform->submit}}" class="btn btn-primary py-3 px-5">
+              </div>
+            </form>
+          @endforeach
         </div>
       </div>
     </div>

@@ -24,13 +24,5 @@ class DatabaseSeeder extends Seeder
         $this->call(products_table_data_seeder::class);
 
 
-        //insert data to topping
-        $this->call(topping_table_data_seeder::class);
-
-        //insert data to buyer
-        $this->call(buyer_table_data_seeder::class);
-
-        //insert data to admin
-        $this->call(admin_table_data_seeder::class);
     }
 }

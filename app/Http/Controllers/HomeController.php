@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use TCG\Voyager\Voyager;
 
 class HomeController extends Controller
 {
@@ -22,13 +23,19 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function index()
+    {
+        return view('home');
+    }
     public function login()
     {
-        return view('pages.home');
-    }
-
-    public function logout(Request $request){
-        Auth::logout();
-        return redirect('/');
+        if(Auth::user()->role_id == '1')
+        {
+            return Voyager::route();
+        }
+        else if(Auth::user()->role_id == '2')
+        {
+            return view('pages.home');
+        }
     }
 }

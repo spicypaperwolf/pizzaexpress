@@ -16,120 +16,91 @@
 			</div>
 		</div>
 	</section>
-	<section class="ftco-intro">
-		<div class="container-wrap">
-			<div class="wrap d-md-flex">
-				<div class="info">
-					<div class="row no-gutters">
-						<div class="col-md-4 d-flex ftco-animate">
-							<div class="icon"><span class="icon-phone"></span></div>
-							<div class="text">
-								<h3>000 (123) 456 7890</h3>
-								<p>A small river named Duden flows</p>
+	@foreach($aboutpage as $about)
+		<section class="ftco-intro">
+			<div class="container-wrap">
+				<div class="wrap d-md-flex">
+					<div class="info">
+						<div class="row no-gutters">
+							<div class="col-md-4 d-flex ftco-animate">
+								<div class="icon"><span class="icon-phone"></span></div>
+								<div class="text">
+									<h3>{{$about->telephone}}</h3>
+									<p>{{$about->telephone_content}}</p>
+								</div>
 							</div>
-						</div>
-						<div class="col-md-4 d-flex ftco-animate">
-							<div class="icon"><span class="icon-my_location"></span></div>
-							<div class="text">
-								<h3>198 West 21th Street</h3>
-								<p>Suite 721 New York NY 10016</p>
+							<div class="col-md-4 d-flex ftco-animate">
+								<div class="icon"><span class="icon-my_location"></span></div>
+								<div class="text">
+									<h3>{{$about->address}}</h3>
+									<p>{{$about->address_content}}</p>
+								</div>
 							</div>
-						</div>
-						<div class="col-md-4 d-flex ftco-animate">
-							<div class="icon"><span class="icon-clock-o"></span></div>
-							<div class="text">
-								<h3>Open Monday-Friday</h3>
-								<p>8:00am - 9:00pm</p>
+							<div class="col-md-4 d-flex ftco-animate">
+								<div class="icon"><span class="icon-clock-o"></span></div>
+								<div class="text">
+									<h3>{{$about->workinghour}}</h3>
+									<p>{{$about->workinghour_content}}</p>
+								</div>
 							</div>
 						</div>
 					</div>
+					<div class="social d-md-flex pl-md-5 p-4 align-items-center">
+						<ul class="social-icon">
+							<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+							<li class="ftco-animate"><a href="https://www.facebook.com/PizzaExpress-506101786822933/?modal=admin_todo_tour" target="_blank"><span class="icon-facebook"></span></a></li>
+							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+						</ul>
+					</div>
 				</div>
-				<div class="social d-md-flex pl-md-5 p-4 align-items-center">
-					<ul class="social-icon">
-						<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-						<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-						<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-					</ul>
+			</div>
+		</section>
+		{{--End Contact & Social media--}}
+
+		{{--About--}}
+		<section class="ftco-about d-md-flex">
+			<div class="one-half img" style="background-image: url(images/about.jpg);"></div>
+			<div class="one-half ftco-animate">
+				<div class="heading-section ftco-animate ">
+					<h2 class="mb-4"><span class="flaticon-pizza"></span> {{$about->abouttitle}}</h2>
+				</div>
+				<div>
+					<p>{{$about->aboutcontent}}</p>
 				</div>
 			</div>
-		</div>
-	</section>
-
-	<section class="ftco-about d-md-flex">
-		<div class="one-half img" style="background-image: url(images/about.jpg);"></div>
-		<div class="one-half ftco-animate">
-			<div class="heading-section ftco-animate ">
-				<h2 class="mb-4">Welcome to <span class="flaticon-pizza">Pizza</span> A Restaurant</h2>
-			</div>
-			<div>
-				<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
-			</div>
-		</div>
-	</section>
-
+		</section>
+	@endforeach
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section ftco-animate text-center">
-					<h2 class="mb-4">Our Chef</h2>
-					<p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
-					<p class="mt-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+					@foreach($ourchef as $oc)
+						@if($oc -> maincolumn == 1)
+							<h2 class="mb-4">{{$oc->title}}</h2>
+							<p class="flip"><span class="deg1"></span><span class="deg2"></span><span class="deg3"></span></p>
+							<p class="mt-5">{{$oc->subtitle}}</p>
+						@endif
+					@endforeach
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
-					<div class="staff">
-						<div class="img mb-4" style="background-image: url(images/person_1.jpg);"></div>
-						<div class="info text-center">
-							<h3><a href="teacher-single.html">Tom Smith</a></h3>
-							<span class="position">Hair Specialist</span>
-							<div class="text">
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+				@foreach($ourchef as $oc)
+					<div class="col-lg-4 d-flex mb-sm-4 ftco-animate">
+						<div class="staff">
+							<div class="img mb-4" style="background-image: url(images/{{$oc->form_picture}});"></div>
+							<div class="info text-center">
+								<h3><a href="teacher-single.html">{{$oc->form_title}}</a></h3>
+								<span class="position">{{$oc->form_subtitle}}</span>
+								<div class="text">
+									<p>{{$oc->form_content}}</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
-					<div class="staff">
-						<div class="img mb-4" style="background-image: url(images/person_2.jpg);"></div>
-						<div class="info text-center">
-							<h3><a href="teacher-single.html">Mark Wilson</a></h3>
-							<span class="position">Beard Specialist</span>
-							<div class="text">
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
-					<div class="staff">
-						<div class="img mb-4" style="background-image: url(images/person_3.jpg);"></div>
-						<div class="info text-center">
-							<h3><a href="teacher-single.html">Patrick Jacobson</a></h3>
-							<span class="position">Hair Stylist</span>
-							<div class="text">
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 d-flex mb-sm-4 ftco-animate">
-					<div class="staff">
-						<div class="img mb-4" style="background-image: url(images/person_4.jpg);"></div>
-						<div class="info text-center">
-							<h3><a href="teacher-single.html">Ivan Dorchsner</a></h3>
-							<span class="position">Beard Specialist</span>
-							<div class="text">
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-							</div>
-						</div>
-					</div>
-				</div>
+				@endforeach
 			</div>
 		</div>
 	</section>
-
-
 	<section class="ftco-counter ftco-bg-dark img" id="section-counter" style="background-image: url(images/bg_2.jpg);" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
@@ -184,30 +155,39 @@
 		<div class="container-wrap">
 			<div class="row no-gutters d-md-flex align-items-center">
 				<div class="col-md-6 d-flex align-self-stretch">
-					<div id="map"></div>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15677.77210499207!2d106.66820907484852!3d10.777340955806523!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ed239
+					2c44df%3A0xd2ecb62e0d050fe9!2sFPT-Aptech+Computer+Education+HCM!5e0!3m2!1sen!2s!4v1563712252257!5m2!1sen!2s" width="800" height="700" frameborder="0" style="border:0" allowfullscreen></iframe>
 				</div>
 				<div class="col-md-6 appointment ftco-animate">
-					<h3 class="mb-3">Contact Us</h3>
-					<form action="#" class="appointment-form">
-						<div class="d-md-flex">
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="First Name">
+							<form action="{{route('insertc')}}" method="post" class="contact-form">
+							<h3 class="mb-3">Contact Us</h3>
+						@foreach($contactform as $contactform)
+							{{ csrf_field() }} <!--Anti - Virus: Cross-site request forgery -->
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<input type="text" id="name" class="form-control" placeholder="{{$contactform->placeholder1}}" name="name">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<input type="text" id="email" class="form-control" placeholder="{{$contactform->placeholder2}}" name="email">
+									</div>
+								</div>
 							</div>
-						</div>
-						<div class="d-me-flex">
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Last Name">
+								<input type="text" id="subject" class="form-control" placeholder="{{$contactform->placeholder3}}" name="subject">
 							</div>
-						</div>
-						<div class="form-group">
-							<textarea name="" id="" cols="30" rows="3" class="form-control" placeholder="Message"></textarea>
-						</div>
-						<div class="form-group">
-							<input type="submit" value="Send" class="btn btn-primary py-3 px-4">
-						</div>
-					</form>
+							<div class="form-group">
+								<textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="{{$contactform->placeholder4}}"></textarea>
+							</div>
+							<div class="form-group">
+								<input type="submit" value="{{$contactform->submit}}" class="btn btn-primary py-3 px-5">
+							</div>
+						</form>
+					@endforeach
 				</div>
 			</div>
 		</div>
 	</section>
-	@endsection('about')
+@endsection('about')

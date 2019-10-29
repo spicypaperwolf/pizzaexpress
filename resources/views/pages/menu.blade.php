@@ -22,7 +22,7 @@
         <div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section ftco-animate text-center">
             <h2 class="mb-4">Our Menu</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <p>PizzaExpress has started to apply new recipe for our Tandoori Chicken Curry Pizza by using leftover after making the Crab Spaghetti.</p>
           </div>
         </div>
       </div>

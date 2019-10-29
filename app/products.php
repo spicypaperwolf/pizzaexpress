@@ -10,10 +10,10 @@ class products extends Model
     protected $primaryKey = 'prod_id';
 
     public function product_cat(){
-        return $this->belongsTo('App\product_cat');
+        return $this->belongsTo('App\product_cat', 'cat_id', 'prod_id');
     }
 
-    public function deOr(){
-        return $this->hasMany('App\deOr');
+    public function orderProduct(){
+        return $this->hasMany('App\orderProduct');
     }
 }
